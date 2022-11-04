@@ -63,6 +63,7 @@ Global $round = 1
 
 HotKeySet("{Esc}", "_exit")
 
+; first run has its own code as loop 2 and onwards will always be the same
 While 1
    if $firstTime == True Then
 	  firstRun()
@@ -141,7 +142,7 @@ func depositBars()
    Send("{LSHIFT up}")
 EndFunc
 
-
+; searches for the color of the dispenser, based on $dispenserColor, whatever color you choose for the tile highlight
 func clickDispenser()
    While 1
 	  $foundDispenser = PixelSearch($dispenserX[0], $dispenserY[0], $dispenserX[1], $dispenserY[1], $dispenserColor)
@@ -168,6 +169,7 @@ func clickDispenser()
    WEnd
 EndFunc
 
+;finds the bank depending on how far away you are from it
 func clickBankMid()
    $x = Random($groundClickX[0], $groundClickX[1], 1)
    $y = Random($groundClickY[0], $groundClickY[1], 1)
@@ -199,7 +201,7 @@ func clickBankMid()
    WEnd ;end of bank open loop
 EndFunc
 
-
+; find the conveyer belt from the bank
 func clickBeltFromBank()
    While 1
 	  $foundBelt = PixelSearch($beltX[0], $beltY[1], $beltX[1], $beltY[0], $beltColor, 10)
@@ -215,6 +217,7 @@ func clickBeltFromBank()
    WEnd
 EndFunc
 
+;click on the belt again after player moves closer to it
 func clickBeltClose($currentOreColor)
    While 1
 	  $foundBelt = PixelSearch($beltCloseX[0], $beltCloseY[0], $beltCloseX[1], $beltCloseY[1], $beltColor, 10)
@@ -230,6 +233,7 @@ func clickBeltClose($currentOreColor)
    WEnd
 EndFunc
 
+;finds the bank from further away
 func clickBankFar($currentOreColor)
    While 1
 	  $foundBank = PixelSearch($bankFarX[0], $bankFarY[0], $bankFarX[1], $bankFarY[1], $bankColor, 10)
@@ -287,6 +291,7 @@ func clickBankClose()
    WEnd ;end of bank open loop
 EndFunc
 
+; collects ore from the bank
 func getOre()
    Send("{LSHIFT down}")
    randomSleep(150, 200)
@@ -350,7 +355,7 @@ func randomSleep($low, $high)
 EndFunc
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; pots
+; using stamina pots
 func getPot()
    While 1
 	  $foundPot = PixelSearch(868, 573, 890, 590, $potColor)
