@@ -1,4 +1,4 @@
-# osrs-autoit-scripts-v2
+# OSRS autoit scripts
 
 Tanning:
 
