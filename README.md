@@ -1,5 +1,7 @@
 # OSRS autoit scripts
 ---
+These scripts rely on pixel search, a feature of autoit that looks for a specific color on the screen.
+---
 ## Tanning:
 
 Requires:
